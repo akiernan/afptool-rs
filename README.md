@@ -141,17 +141,23 @@ Successfully packed RKAF image:
 
 ## Supported Chip Families
 
-| Chip Code | Family  |
-|-----------|---------|
-| 0x50      | rk29xx  |
-| 0x60      | rk30xx  |
-| 0x70      | rk31xx  |
-| 0x80      | rk32xx  |
-| 0x41      | rk3368  |
-| 0x36      | RK3326  |
-| 0x32      | RK3562  |
-| 0x38      | RK3566  |
-| 0x30      | PX30    |
+| Chip Code | Family | Description |
+|---|---|---|
+| 0x19 | RV1109 / RV1126 | Visual AI Processor (NPU) |
+| 0x30 | PX30 / RK3326 | Industrial/Vehicle / Commonly used in early retro handhelds |
+| 0x32 | RK3562 | Entry-level tablets/educational devices post-2023 |
+| 0x33 | RK3399 / RK3399Pro | Classic high-performance hexa-core (including Pro version with dedicated NPU) |
+| 0x35 | RK3588 / RK3588S | Flagship octa-core (8K, 6TOPS NPU) |
+| 0x36 | RK3326 | (Some versions compatible with 0x30, specific ID) |
+| 0x38 | RK3566 / RK3568 | Current mainstream mid-range AIoT |
+| 0x39 | RK3528 | 4K multimedia/TV box |
+| 0x41 | RK3368 | Early octa-core 64-bit series |
+| 0x48 | RK3308 | Voice/Audio dedicated SoC |
+| 0x50 | RK29xx | Very early single-core series |
+| 0x51 | RV1108 | Early visual processing SoC |
+| 0x60 | RK30xx / RK3066 | Dual-core era |
+| 0x70 | RK31xx / RK3188 | Early quad-core (28nm classic) |
+| 0x80 | RK32xx / RK3288 | 32-bit era performance flagship |
 
 ## Testing
 
