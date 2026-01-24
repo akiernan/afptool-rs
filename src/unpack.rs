@@ -57,15 +57,21 @@ fn unpack_rkfw(buf: &[u8], dst_path: &str) -> Result<()> {
     );
 
     match buf[0x15] {
-        0x50 => chip = Some("RK29xx"),
-        0x60 => chip = Some("RK30xx"),
-        0x70 => chip = Some("RK31xx"),
-        0x80 => chip = Some("RK32xx"),
-        0x41 => chip = Some("RK3368"),
-        0x36 => chip = Some("RK3326"),
+        0x19 => chip = Some("RV1109/RV1126"),
+        0x30 => chip = Some("PX30/RK3326"),
         0x32 => chip = Some("RK3562"),
-        0x38 => chip = Some("RK3566"),
-        0x30 => chip = Some("PX30"),
+        0x33 => chip = Some("RK3399/RK3399Pro"),
+        0x35 => chip = Some("RK3588/RK3588S"),
+        0x36 => chip = Some("RK3326"),
+        0x38 => chip = Some("RK3566/RK3568"),
+        0x39 => chip = Some("RK3528"),
+        0x41 => chip = Some("RK3368"),
+        0x48 => chip = Some("RK3308"),
+        0x50 => chip = Some("RK29xx"),
+        0x51 => chip = Some("RV1108"),
+        0x60 => chip = Some("RK30xx/RK3066"),
+        0x70 => chip = Some("RK31xx/RK3188"),
+        0x80 => chip = Some("RK32xx/RK3288"),
         _ => println!(
             "You got a brand new chip ({:#x}), congratulations!!!",
             buf[0x15]
