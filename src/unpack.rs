@@ -185,10 +185,6 @@ fn unpack_rkafp(file_path: &str, dst_path: &str) -> Result<()> {
         // 安全地提取路径字符串
         if let Ok(cstr_path) = std::ffi::CStr::from_bytes_until_nul(&part.full_path) {
             let part_full_path = cstr_path.to_string_lossy();
-            if part_full_path == "SELF" || part_full_path == "RESERVED" {
-                continue;
-            }
-
             let part_name = if let Ok(cstr_name) = std::ffi::CStr::from_bytes_until_nul(&part.name) {
                 cstr_name.to_string_lossy().to_string()
             } else {
@@ -205,7 +201,7 @@ fn unpack_rkafp(file_path: &str, dst_path: &str) -> Result<()> {
                 metadata_file,
                 "{},{},{:#010x},{:#010x},{:#010x},{:#010x},{:#010x}",
                 part_name,
-                part_full_path,
+                &part_full_path,
                 flash_size,
                 flash_offset,
                 part_offset,
@@ -213,12 +209,16 @@ fn unpack_rkafp(file_path: &str, dst_path: &str) -> Result<()> {
                 part_byte_count
             )?;
 
-            let part_full_path = format!("{}/{}", dst_path, part_full_path);
+            if part_full_path == "SELF" || part_full_path == "RESERVED" {
+                continue;
+            }
+
+            let file_to_extract = format!("{}/{}", dst_path, part_full_path);
             extract_file(
                 &mut fp,
                 part.part_offset as u64,
                 part.part_byte_count as u64,
-                &part_full_path,
+                &file_to_extract,
             )?;
         }
     }

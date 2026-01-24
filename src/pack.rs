@@ -368,7 +368,9 @@ pub fn pack_rkaf(input_dir: &str, output_file: &str, model: &str, manufacturer: 
     let mut file_data_list = Vec::new();
 
     for (i, (name, path)) in file_list.iter().enumerate() {
-        let (file_offset, file_size, _padded_size) = if let Some((data, offset, padded)) = file_data_map.get(path) {
+        let (file_offset, file_size, _padded_size) = if path == "SELF" || path == "RESERVED" {
+            (0, 0, 0)
+        } else if let Some((data, offset, padded)) = file_data_map.get(path) {
             // File already loaded, reuse offset
             (*offset, data.len() as u32, *padded)
         } else {
@@ -407,7 +409,11 @@ pub fn pack_rkaf(input_dir: &str, output_file: &str, model: &str, manufacturer: 
             part.flash_offset = meta.flash_offset;
             part.padded_size = meta.padded_size;
         } else {
-            return Err(anyhow!("Missing partition metadata for {:}", name));
+            // Instead of returning an error, assume it's a special partition
+            // with no data and use default values.
+            part.flash_size = 0;
+            part.flash_offset = 0;
+            part.padded_size = 0;
         }
 
         part.part_offset = file_offset;
