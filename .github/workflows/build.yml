@@ -136,6 +136,8 @@ jobs:
 
   # Create release when tagged
   release:
+    permissions:
+      contents: write
     if: startsWith(github.ref, 'refs/tags/v')
     needs: [build, build-linux-arm64, create-universal-macos]
     runs-on: ubuntu-latest
