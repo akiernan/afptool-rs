@@ -91,7 +91,15 @@ mod integration_tests {
         cmd.assert()
             .success()
             .stdout(predicate::str::contains("afptool-rs"))
-            .stdout(predicate::str::contains("A Rust tool for unpacking RockChip firmware images"))
+            .stdout(predicate::str::contains("A Rust tool for packing and unpacking RockChip firmware images"));
+    }
+
+    #[test]
+    fn test_cli_unpack_help() {
+        let mut cmd = Command::cargo_bin("afptool-rs").unwrap();
+        cmd.arg("unpack").arg("--help");
+        cmd.assert()
+            .success()
             .stdout(predicate::str::contains("Path to the firmware file"))
             .stdout(predicate::str::contains("Directory where extracted files will be saved"));
     }
