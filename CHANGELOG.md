@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.1
+
+- Fix: update integration tests to match clap v4 output format (#11)
+
 ## v1.2.0
 
 This release includes updated Rockchip chip code mappings, bug fixes for firmware packing, and improved documentation.
