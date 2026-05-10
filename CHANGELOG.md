@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.3 (2026-05-10)
+
+- Internal updates and bug fixes.
+
+
 ## v1.2.2 (2026-05-10)
 
 - Internal updates and bug fixes.
