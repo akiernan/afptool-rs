@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.2 (2026-05-10)
+
+- Internal updates and bug fixes.
+
+
 ## v1.2.1
 
 - Fix: update integration tests to match clap v4 output format (#11)
