@@ -1,4 +1,4 @@
-# apftool-rs
+# afptool-rs
 
 A Rust tool for unpacking and packing RockChip firmware images (RKFW and RKAF formats).
 

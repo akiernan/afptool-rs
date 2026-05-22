@@ -1,4 +1,4 @@
-# apftool-rs
+# afptool-rs
 
 一个用于解包瑞芯微固件映像文件（RKFW 和 RKAF 格式）的 Rust 工具。
 
